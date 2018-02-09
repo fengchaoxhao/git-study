@@ -1,7 +1,7 @@
 # Git 学习、练习项目
 
 > [Git教程 | 菜鸟教程](http://www.runoob.com/git/git-tutorial.html)  
-> [廖雪峰的官方网站-Git](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> [廖雪峰的官方网站-Git](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)  
 > [Git官方教程](https://git-scm.com/book/zh/v2)
 
 ## 创建版本库
