@@ -1,4 +1,7 @@
-# test
+# Git 学习、练习项目
+
+> [Git教程 | 菜鸟教程](http://www.runoob.com/git/git-tutorial.html)  
+> [廖雪峰的官方网站-Git](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## 创建版本库
 
@@ -67,12 +70,12 @@ git status -s        #获得简短的结果输出
  - 查看尚未缓存的改动：git diff	(工作副本 <---> 缓存区)
  - 查看已缓存的改动：git diff --cached	(缓存区 <---> 本地仓库)
  - 查看已缓存的和未缓存的所有改动：git diff HEAD	(工作副本/缓存区 <---> 本地仓库)
- 
+
 ## 取消已暂存的内容
 
 ```
 git reset HEAD -- <文件>
-git reset --hard HEAD^    #TODO 
+git reset --hard HEAD^    #TODO
 ```
 
 ## 从Git仓库中删除文件
@@ -201,9 +204,3 @@ git stash pop
 而且会显示在各个分支里。让你迷惑它到底该属于哪个分支。  
  所以stash起作用的全是stage 或者 head 的文件。
 ```
-
-
-
-
-
-
