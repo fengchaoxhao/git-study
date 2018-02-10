@@ -55,8 +55,8 @@ $ git init <指定目录>
 ```
 ### 克隆现有的仓库
 ```
-git clone <仓库地址>
-git clone <仓库地址> <指定目录>
+$ git clone <仓库地址>
+$ git clone <仓库地址> <指定目录>
 ```
 
 ## 添加新文件或修改文件到暂存区
@@ -74,11 +74,6 @@ $ git status --short
 ```
 ![git status 效果](./images/git_status_02.png "git status 效果展示图")
 
-## 提交暂存区中的更改到本地仓库
-```
-git commit -m "提交注释"
-```
-
 ## 查看文件改动
 ```
  - 查看尚未缓存的改动：git diff	(工作副本 <---> 缓存区)
@@ -86,7 +81,15 @@ git commit -m "提交注释"
  - 查看已缓存的和未缓存的所有改动：git diff HEAD	(工作副本/缓存区 <---> 本地仓库)
 ```
 ![git diff 效果展示图](./images/git_diff_01.png "git diff 效果展示图")
-注：[如何读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
+注：[上面图片里的内容看不懂的话，请学习下如何读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
+
+## 提交暂存区中的更改到本地仓库
+```
+$ git commit
+$ git commit -m "提交注释"
+$ git commit -a -m "提交注释"
+$ git commit -v
+```
 
 ## 取消已暂存的内容
 
