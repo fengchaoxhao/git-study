@@ -99,7 +99,6 @@ git reset --hard HEAD^    #TODO
 ```
 
 ## 从Git仓库中删除文件
-
 ```
 git rm <文件>	#从Git仓库和工作区中删除
 git rm -f <文件>	 #强制删除
