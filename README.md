@@ -81,6 +81,7 @@ $ git status --short
  - 查看已缓存的和未缓存的所有改动：git diff HEAD	(工作副本/缓存区 <---> 本地仓库)
 ```
 ![git diff 效果展示图](./images/git_diff_01.png "git diff 效果展示图")
+
 注：[上面图片里的内容看不懂的话，请学习下如何读懂diff](http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html)
 
 ## 提交暂存区中的更改到本地仓库
