@@ -110,11 +110,16 @@ $ git mv <文件/目录> <文件/目录>
 ```
 $ git log
 $ git log -p                   #显示每次提交的内容差异
-$ git log --stat               #
-$ git log --oneline		        #以简短的方式查看日志
-$ git log --oneline --graph		#查看分支合并
-$ git log --oneline --reverse     #逆向显示日志
-$ git log --author <用户名> 	 #查看某个用户的提交日志
+$ git log --stat               #查看简略的统计信息
+$ git log --pretty=oneline
+$ git log --pretty=short
+$ git log --pretty=full
+$ git log --pretty=fuller
+$ git log --pretty=format:"%h - %s"
+$ git log --oneline		         #以简短的方式查看日志
+$ git log --oneline --graph		 #查看分支合并
+$ git log --oneline --reverse  #逆向显示日志
+$ git log --author <用户名> 	  #查看某个用户的提交日志
 ```
 Table 1. git log --pretty=format 常用的选项  
 
@@ -136,7 +141,16 @@ Table 1. git log --pretty=format 常用的选项
 |   %cr       | 提交日期，按多久以前的方式显示                    |
 |   %s        | 提交说明                                        |
 
-## 取消已暂存的内容
+Table 2. git log 的常用选项  
+
+# TODO 未完待续
+## 撤销操作
+### 重新提交
+```
+$ git commit --amend    #如果此时暂存区没有要提交的内容，那么只覆盖上次提交的注释；
+```
+
+### 取消已暂存的内容
 ```
 git reset HEAD -- <文件>
 git reset --hard HEAD^    #TODO
