@@ -185,12 +185,14 @@ $ git remote rename <旧名> <新名>
 
 ### 提取远程仓库
 ```
-$ git fetch <远程仓库> <分支名称>
+$ git fetch <远程仓库> <分支名称>           #从远程仓库获取分支信息
+$ git fetch <远程仓库> --tags              #从远程仓库获取标签信息
+$ git fetch --all                          #从远程仓库获取所有分支信息
 ```
 
 ### 推送远程仓库
 ```
-$ git push <仓库名称> <分支名称/标签名称>
+$ git push <仓库名称> <分支名称>
 ```
 
 ## 打标签
@@ -229,39 +231,53 @@ $ git push origin --tags
 $ git checkout -b <分支名称> <标签名称>
 ```
 
-## 创建分支
+## Git 分支操作
+### 创建分支
 ```
-git branch (分支名称)
-```
-## 查看分支
-```
-git branch
-```
-## 切换分支
-```
-git checkout (分支名称)
-git checkout -b (分支名称) #创建新分支并立即切换到新分支下
-```
-## 删除分支
-```
-git branch -d (分支名称)
-```
-## 合并分支
-```
-git merge (分支名称)
-git merge --no-ff -m "提交注释" (分支名称)
+$ git branch (分支名称)
 ```
 
+### 查看分支
+```
+$ git branch
+$ git branch -v
+$ git branch --merged                  #查看已经合并到当前分支的分支
+$ git branch --no-merged               #查看未合并到当前分支的分支
+```
 
+### 切换分支
+```
+$ git checkout (分支名称)
+$ git checkout -b (分支名称)                 #创建新分支并立即切换到新分支下
+```
+
+### 删除本地分支
+```
+$ git branch -d (分支名称)
+```
+
+### 合并分支
+```
+$ git merge (分支名称)
+$ git merge --no-ff -m "提交注释" (分支名称)
+```
+
+### 远程跟踪分支
+```
+$ git branch -u origin/master            #设置当前分支为远程分支的跟踪分支
+$ git branch -vv                         #查看设置的所有跟踪分支
+```
+
+### 删除远程分支
+```
+$ git push origin --delete dev
+```
 
 ## 查看命令历史
 
 ```
 git reflog
 ```
-
-
-
 
 ## 存放工作区
 
