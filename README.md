@@ -150,45 +150,35 @@ Table 2. git log 的常用选项
 $ git commit --amend    #如果此时暂存区没有要提交的内容，那么只覆盖上次提交的注释；
 ```
 
-### 取消已暂存的内容
+### 取消暂存的文件
 ```
-git reset HEAD -- <文件>
-git reset --hard HEAD^    #TODO
+$ git reset HEAD -- <文件>
+$ git reset --hard HEAD^    #TODO
 ```
 
-## 撤销工作区的修改
-
+### 撤销工作区的修改
 ```
-git checkout -- <文件>
+$ git checkout -- <文件>
 ```
 
 ## 创建分支
-
 ```
 git branch (分支名称)
 ```
-
 ## 查看分支
-
 ```
 git branch
 ```
-
 ## 切换分支
-
 ```
 git checkout (分支名称)
 git checkout -b (分支名称) #创建新分支并立即切换到新分支下
 ```
-
 ## 删除分支
-
 ```
 git branch -d (分支名称)
 ```
-
 ## 合并分支
-
 ```
 git merge (分支名称)
 git merge --no-ff -m "提交注释" (分支名称)
@@ -203,6 +193,10 @@ git reflog
 ```
 
 ## 打标签
+### 列出标签
+```
+$ git tag -l 'v1.0*'
+```
 
 ```
 git tag -a v1.0 -m "提交注释"    #给当前最近一次提交(HEAD)打标签
@@ -212,40 +206,40 @@ git tag -d v0.1    #删除标签
 ```
 
 ## 查看标签详情
-
 ```
 git show <版本号>
 ```
 
-## 添加远程仓库
-
+## 远程仓库的使用
+### 查看仓库
 ```
-git remote add <别名> <远程仓库地址>
+$ git remote                   #查看当前远程仓库
+$ git remote show <仓库名称>    #查看远程仓库详细信息
+$ git remote -v                #查看当前远程仓库，并显示实际的链接地址
 ```
-
-## 查看仓库
-
+### 添加远程仓库
 ```
-git remote    #查看当前远程仓库
-git remote -v    #查看当前远程仓库，并显示实际的链接地址
-```
-
-## 删除远程仓库
-
-```
-git remote rm <别名>
+$ git remote add <仓库名称简写> <远程仓库地址>
 ```
 
-## 提取远程仓库
-
+### 删除远程仓库
 ```
-git fetch
+git remote rm <仓库名称简写>
+```
+
+### 重命名远程仓库
+```
+$ git remote rename <旧名> <新名>
+```
+
+### 提取远程仓库
+```
+git fetch <远程仓库> <分支名称>
 ```
 
 ## 推送远程仓库
-
 ```
-git push
+git push <> <>
 ```
 
 ## 存放工作区
