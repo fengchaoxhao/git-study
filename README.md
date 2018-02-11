@@ -117,6 +117,7 @@ $ git log --oneline --reverse     #逆向显示日志
 $ git log --author <用户名> 	 #查看某个用户的提交日志
 ```
 Table 1. git log --pretty=format 常用的选项  
+
 | 选项 | 说明 |
 | :---         | :--- |                           
 |   %H        | 提交对象（commit）的完整哈希字串                |  
