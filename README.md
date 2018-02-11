@@ -106,6 +106,22 @@ $ git rm -r *		                  #递归删除
 $ git mv <文件/目录> <文件/目录>
 ```
 
+## 查看提交历史
+```
+$ git log
+$ git log -p                   #显示每次提交的内容差异
+$ git log --stat               #
+$ git log --oneline		        #以简短的方式查看日志
+$ git log --oneline --graph		#查看分支合并
+$ git log --oneline --reverse     #逆向显示日志
+$ git log --author <用户名> 	 #查看某个用户的提交日志
+```
+> Table 1. git log --pretty=format 常用的选项
+> 选项|说明
+> |:---         | :---                            |
+> |   %H        | 提交对象（commit）的完整哈希字串   |
+> |   %h        | 提交对象的简短哈希字串            |
+
 ## 取消已暂存的内容
 ```
 git reset HEAD -- <文件>
@@ -150,15 +166,7 @@ git merge (分支名称)
 git merge --no-ff -m "提交注释" (分支名称)
 ```
 
-## 查看提交历史
 
-```
-git log
-git log --oneline		        #以简短的方式查看日志
-git log --oneline --graph		#查看分支合并
-git log --oneline --reverse     #逆向显示日志
-git log --author <用户名> 	 #查看某个用户的提交日志
-```
 
 ## 查看命令历史
 
