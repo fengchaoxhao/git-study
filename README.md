@@ -284,6 +284,7 @@ $ git branch (分支名称)
 ```
 $ git branch
 $ git branch -v
+$ git branch -a
 $ git branch --merged                  #查看已经合并到当前分支的分支
 $ git branch --no-merged               #查看未合并到当前分支的分支
 ```
