@@ -84,7 +84,7 @@ $ git config --global core.editor vi            #修改核心编辑器为vi编�
 $ git config --global color.ui true             #让Git显示颜色
 $ git config --global alias.st status           #配置status命令参数的别名
 $ git config user.name = "homepig"              #配置当前仓库的用户名
-
+$ git config diff.tool vimdiff                  #设置difftool的默认工具为vimdiff
 ```
 ## Git帮助查看
 ```
@@ -96,16 +96,17 @@ $ man git-init
 ### 初始化仓库
 ```
 $ git init     
-$ git init <指定目录>
-$ git init --bare
+$ git init <指定目录>                    #在指定目录下初始化仓库
+$ git init --bare                      #初始化一个裸仓库，没有工作区
 ```
 ### 克隆现有的仓库
 ```
-$ git clone <仓库地址>
-$ git clone <仓库地址> <指定目录>
+$ git clone <远程仓库地址>                  #默认本地仓库名称和远程仓库一样
+$ git clone <远程仓库地址> <指定目录>        #自定义本地仓库的名称
 $ git clone --bare                        #克隆一个仓库不包含工作区，只有版本内容
 $ git clone --mirror                      #克隆一个仓库不包含工作区，但对上游版本库进行了注册，在本仓库总使用git fetch和git merge命令和上游版本库进行同步
 $ git clone --recursive/--recurse-submodules     #克隆本仓库的同时，也克隆子项目的仓库
+$ git clone --depth=1                     #只克隆最近一次提交,当git版本库太大时可以采用
 注：克隆操作是对仓库的操作，并不是把master分支的代码检出到本地。
 ```
 
@@ -120,15 +121,19 @@ $ git add <文件1> <文件2> <文件3> <文件...>   #添加多个指定文件�
 ```
 $ git status             #注：如果一个目录下没有任何文件，则不会显示。
 $ git status -s          #获得简短的结果输出
-$ git status --short
+$ git status --short     #作用同上
 ```
 ![git status 效果](./images/git_status_02.png "git status 效果展示图")
 
 ## 查看文件改动
 ```
- - 查看尚未缓存的改动：git diff	(工作副本 <---> 缓存区)
- - 查看已缓存的改动：git diff --cached	(缓存区 <---> 本地仓库)
- - 查看已缓存的和未缓存的所有改动：git diff HEAD	(工作副本/缓存区 <---> 本地仓库)
+ - 查看尚未缓存的改动：$git diff <指定文件>	#(工作副本 <---> 暂存区)
+ - 图形化方式查看尚未缓存的改动：$git difftool --tool=vimdiff <指定文件>
+ - 查看已缓存的改动：$git diff --cached/--staged <指定文件>	#(暂存区 <---> 本地仓库)
+ - 图形化方式查看已缓存的改动：$git difftool --tool=vimdiff --cached
+ - 查看已缓存的和未缓存的所有改动：$git diff HEAD	#(工作副本/缓存区 <---> 本地仓库)
+ - 查看历史两个版本之间的差异：$git diff <版本号1> <版本号2>
+ - 查看某一次提交的改动：$git show <提交版本号>
 ```
 ![git diff 效果展示图](./images/git_diff_01.png "git diff 效果展示图")
 
@@ -138,22 +143,30 @@ $ git status --short
 ```
 $ git commit
 $ git commit -m "提交注释"
-$ git commit -a -m "提交注释"
-$ git commit -v
+$ git commit -a -m "提交注释"    #所有被跟踪的文件如果做了修改，不用进行add操作提交暂存区，直接提交到仓库中
+$ git commit -v                #提交时或得更详细的差异提示
 ```
 
 ## 从Git仓库中删除文件
 ```
 $ git rm <文件>	                  #从暂存区中删除
-$ git rm -f <文件>	              #从暂存区中强制删除
+$ git rm -f <文件>	              #从暂存区中强制删除,如果要删除的文件在工作区被修改了，或是修改后已经提交到暂存区，那么删除时需加-f选项
 $ git rm --cached <文件>	        #从暂存区中删除，工作区保留
 $ git rm -r *		                  #递归删除
 ```
-注：执行rm命令后只是从暂存区删除，最后还要commit之后才会在仓库中删除。
+注（1）：执行rm命令会先从工作区删除文件，然后将删除操作提交到暂存区。
+注（2）：执行rm命令后只是从暂存区删除，最后还要commit之后才会在仓库中删除。
+
+### 删除文件的另外一种办法 ###
+```
+$ rm <文件>
+$ git add <文件>
+注：以上操作等同于$git rm
+```
 
 ## 移动或重命名一个文件、目录
 ```
-$ git mv <文件/目录> <文件/目录>
+$ git mv <文件1/目录1> <文件2/目录2>      #将文件1或目录1修改为文件2或目录2
 ```
 
 ## 查看提交历史
@@ -161,7 +174,7 @@ $ git mv <文件/目录> <文件/目录>
 $ git log
 $ git log -p                   #显示每次提交的内容差异
 $ git log --stat               #查看简略的统计信息
-$ git log --pretty=oneline
+$ git log --pretty=oneline     #将每次提交放在一行进行显示
 $ git log --pretty=short
 $ git log --pretty=full
 $ git log --pretty=fuller
@@ -170,6 +183,8 @@ $ git log --oneline		         #以简短的方式查看日志
 $ git log --oneline --graph		 #查看分支合并
 $ git log --oneline --reverse  #逆向显示日志
 $ git log --author <用户名> 	  #查看某个用户的提交日志
+$ git log <指定文件>            #查看指定文件的提交日志
+$ git log --decorate     
 ```
 Table 1. git log --pretty=format 常用的选项  
 
@@ -192,8 +207,10 @@ Table 1. git log --pretty=format 常用的选项
 |   %s        | 提交说明                                        |
 
 Table 2. git log 的常用选项  
+```
+TODO关于log的常用选项未完待续
+```
 
-# TODO 未完待续
 ## 撤销操作
 ### 重新提交
 ```
@@ -202,20 +219,21 @@ $ git commit --amend    #如果此时暂存区没有要提交的内容，那么�
 
 ### 取消暂存的文件
 ```
-$ git reset HEAD -- <文件>
+# git reset HEAD <指定文件>                  #取消暂存的文件
+$ git reset HEAD -- <指定文件>
 $ git reset --hard HEAD^    #TODO
 ```
 
 ### 撤销工作区的修改
 ```
-$ git checkout -- <文件>
+$ git checkout -- <指定文件>
 ```
 
 ## 远程仓库的使用
 ### 查看仓库
 ```
 $ git remote                   #查看当前远程仓库
-$ git remote show <仓库名称>    #查看远程仓库详细信息
+$ git remote show <远程仓库名称>    #查看远程仓库详细信息
 $ git remote -v                #查看当前远程仓库，并显示实际的链接地址
 ```
 ### 添加远程仓库
@@ -225,7 +243,7 @@ $ git remote add <仓库名称简写> <远程仓库地址>
 
 ### 删除远程仓库
 ```
-$ git remote rm <仓库名称简写>
+$ git remote rm <远程仓库名称简写>
 ```
 
 ### 重命名远程仓库
@@ -242,7 +260,7 @@ $ git fetch --all                          #从远程仓库获取所有分支信
 
 ### 推送远程仓库
 ```
-$ git push <仓库名称> <分支名称>
+$ git push <远程仓库名称> <分支名称>
 ```
 
 ## 打标签
@@ -255,36 +273,41 @@ $ git tag -l 'v1.0*'        #列出匹配的标签
 ### 打附注标签
 ```
 $ git tag -a v1.0 -m "提交注释"    #给当前最近一次提交(HEAD)打标签
-$ git tag -a v1.0 <版本号>    #给历史的某一版本打标签
+$ git tag -a v1.0 <版本号>         #给历史的某一版本打标签
 ```
 ### 打轻量标签
 ```
 $ git tag v1.0
 ```
+###　后期打标签 ###
+```
+$ git tag -a v1.0 <提交ＳＨＡ-1校验和/版本号>
+```
+
 #### 删除标签
 ```
 $ git tag -d v0.1    #删除标签
 ```
 ### 查看标签详情
 ```
-$ git show <版本号>
+$ git show <标签名称>
 ```
 
 ### 共享标签
 ```
-$ git push origin [tagname]
-$ git push origin --tags
+$ git push <远程仓库名称> [标签名称]                 #推送指定标签到远程仓库
+$ git push <远程仓库名称> --tags　　　　　　　　　　　　＃推送所有不在远程仓库的标签
 ```
 
 ### 检出标签
 ```
-$ git checkout -b <分支名称> <标签名称>
+$ git checkout -b <分支名称> <标签名称>          #在特定的标签上创建一个分支
 ```
 
 ## Git分支操作
 ### 创建分支
 ```
-$ git branch (分支名称)
+$ git branch <分支名称>
 ```
 
 ### 查看分支
