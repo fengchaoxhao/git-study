@@ -1,4 +1,4 @@
-- Git工具
+- # Git工具 #
   - ## 交互式暂存　##
     ```
     $ git add -i/--interactive                    #启用交互式暂存界面
@@ -23,8 +23,9 @@
 
     - ### 清理 ###
       ```
-      $ git clean -f -d
-      $ git clean -n -d
-      $ git clean -n -d -x
-      $ git clean -x -i
+      $ git clean -f                          #clean.requireForce配置项的值为true时，必必须加-f 参数，git才会执行清理
+      $ git clean -f -d                       #-d表示清理子目录
+      $ git clean -n -d                       #-n表示只做清理演练，并不真正执行清理
+      $ git clean -n -d -x                    #-x表示忽略.gitiignore
+      $ git clean -x -i                       #-i
       ```
