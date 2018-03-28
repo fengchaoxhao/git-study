@@ -354,7 +354,7 @@ $ git branch -vv                         #查看设置的所有跟踪分支
 $ git push origin --delete <远程分支名称>               #删除远程分支
 ```
 
-### 变基　###
+### 变基 ###
 ```
 $ git rebase <目标基底分支>            #将当前分支的修改合并到目标基底分支
 $ git rebase --continue              #解决完冲突后继续进行变基操作
@@ -365,7 +365,7 @@ $ git rebase <目标基底分支> <需要被合并的分支>     #
 ## 查看命令历史
 
 ```
-git reflog
+$git reflog
 ```
 
 
@@ -373,13 +373,11 @@ git reflog
 ## 存放工作区
 
 ```
-git stash
-git stash list
-git stash apply
-git stash pop
+$git stash
+$git stash list
+$git stash apply
+$git stash pop
 注：没有被stage或者head的文件，是无法被 stash的。  
 而且会显示在各个分支里。让你迷惑它到底该属于哪个分支。  
  所以stash起作用的全是stage 或者 head 的文件。
-__hehe__
-
 ```
