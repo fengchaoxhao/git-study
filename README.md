@@ -85,6 +85,7 @@ $ git config --global color.ui true             #让Git显示颜色
 $ git config --global alias.st status           #配置status命令参数的别名
 $ git config user.name = "homepig"              #配置当前仓库的用户名
 $ git config diff.tool vimdiff                  #设置difftool的默认工具为vimdiff
+$ git config --global core.quotepath false      #解决git status出现中文乱码的问题
 ```
 ## Git帮助查看
 ```
